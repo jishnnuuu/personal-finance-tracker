@@ -12,6 +12,7 @@
 #define MAX_DESCRIPTION_LENGTH 100
 #define MAX_TYPE_LENGTH         10
 #define DATE_LENGTH             11
+#define MAX_TRANSACTIONS        10000
 
 #define DATA_FILE "data/transactions.dat"
 
