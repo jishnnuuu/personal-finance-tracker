@@ -1,35 +1,5 @@
 #include "../include/file.h"
 
-bool saveDatabase(const FinanceDB *db)
-{
-    if (db == NULL)
-    {
-        return false;
-    }
-
-    FILE *fp = fopen(DATA_FILE, "wb");
-
-    if (fp == NULL)
-    {
-        return false;
-    }
-
-    fwrite(&db->size,
-            sizeof(size_t),
-            1,
-            fp);
-
-    fwrite(db->transactions,
-            sizeof(Transaction),
-            db->size,
-            fp);
-
-    fclose(fp);
-
-    return true;
-}
-
-
 bool loadDatabase(FinanceDB *db)
 {
     if (db == NULL)
@@ -65,7 +35,7 @@ bool loadDatabase(FinanceDB *db)
     Transaction *temp =
         realloc(db->transactions,
                 newCapacity * sizeof(Transaction));
-                
+
     if (temp == NULL)
     {
         fclose(fp);
