@@ -115,23 +115,29 @@ bool inputTransaction(Transaction *t)
         return false;
     }
 
-    printf("Enter ID: ");
-    scanf("%d", &t->id);
+    if (!readString("Date (YYYY-MM-DD): ",
+                    t->date,
+                    DATE_LENGTH))
+        return false;
 
-    printf("Enter Date (YYYY-MM-DD): ");
-    scanf("%10s", t->date);
+    if (!readString("Type (Income/Expense): ",
+                    t->type,
+                    MAX_TYPE_LENGTH))
+        return false;
 
-    printf("Enter Type (Income/Expense): ");
-    scanf("%9s", t->type);
+    if (!readString("Category: ",
+                    t->category,
+                    MAX_CATEGORY_LENGTH))
+        return false;
 
-    printf("Enter Category: ");
-    scanf("%29s", t->category);
+    if (!readFloat("Amount: ",
+                    &t->amount))
+        return false;
 
-    printf("Enter Amount: ");
-    scanf("%f", &t->amount);
-
-    printf("Enter Description: ");
-    scanf(" %99[^\n]", t->description);
+    if (!readString("Description: ",
+                    t->description,
+                    MAX_DESCRIPTION_LENGTH))
+        return false;
 
     return true;
 }
