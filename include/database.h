@@ -26,6 +26,7 @@ typedef struct
     Transaction *transactions;
     size_t size;
     size_t capacity;
+    int nextTransactionId;
 } FinanceDB;
 
 /*
